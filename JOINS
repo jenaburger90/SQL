@@ -1,0 +1,33 @@
+/* Create table about the people and what they do here */
+
+CREATE TABLE musicians_signs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    fullname TEXT,
+    age INTEGER,
+    sign TEXT);
+    
+INSERT INTO musicians_signs (fullname, age, sign) VALUES ("Taylor Swift", "32", 'Sagittarius');
+INSERT INTO musicians_signs (fullname, age, sign) VALUES ("Cari Fletcher", "28", 'Pisces');
+INSERT INTO musicians_signs (fullname, age, sign) VALUES ("Adam Levine", "43", 'Pisces');
+INSERT INTO musicians_signs (fullname, age, sign) VALUES ("Harry Styles", "28", 'Aquarius');
+INSERT INTO musicians_signs (fullname, age, sign) VALUES ("Lizzo", "34", 'Tauros');
+INSERT INTO musicians_signs (fullname, age, sign) VALUES ('Cardi B', '29', 'Libra');
+
+CREATE TABLE musicians_genre (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    fullname TEXT,
+    genre INTEGER);
+    
+INSERT INTO musicians_genre (fullname, genre) VALUES ('Taylor Swift', 'pop');
+INSERT INTO musicians_genre (fullname, genre) VALUES ('Cari Fletcher', 'pop');
+INSERT INTO musicians_genre (fullname, genre) VALUES ('Adam Levine', 'pop');
+INSERT INTO musicians_genre (fullname, genre) VALUES ('Harry Styles', 'pop');
+INSERT INTO musicians_genre (fullname, genre) VALUES ('Lizzo', 'pop');
+INSERT INTO musicians_genre (fullname, genre) VALUES ('Cardi B', 'rap');
+
+SELECT musicians_signs.fullname, musicians_signs.sign, musicians_genre.genre
+FROM musicians_signs
+JOIN musicians_genre
+ON musicians_signs.fullname = musicians_genre.fullname;
+
+
