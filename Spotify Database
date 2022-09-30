@@ -1,0 +1,48 @@
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness text NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL 
+);
+
+/*1. What was the most danceable track with an energy below .5?*/
+SELECT track_name, danceability
+FROM BIT_DB.Spotifydata
+WHERE danceability < 0.5;
+
+/*2. How many tracks was Justin Beiber found on and which was the highest in popularity?*/
+SELECT track_name, artist_name, popularity
+FROM BIT_DB.Spotifydata
+WHERE artist_name LIKE 'Justin Bieber' OR track_name LIKE '%Justin Bieber%'
+ORDER BY popularity DESC;
+
+/*3. What was the longest song and who was it by?*/
+SELECT track_name, artist_name, duration_ms
+FROM BIT_DB.Spotifydata
+ORDER BY duration_ms DESC;
+
+/*4. What was the top ten most popular songs and who were they by?*/
+SELECT track_name, artist_name, popularity
+FROM BIT_DB.Spotifydata
+ORDER BY popularity DESC
+Limit 10;
+
+/*5. Which artist had the most tracks listed and how many were there?*/
+SELECT artist_name, track_name, COUNT(artist_name) AS Total_Songs
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+ORDER BY Total_Songs DESC;
